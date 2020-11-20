@@ -3,6 +3,8 @@ An editor that forces users to use the e-prime constraint as described by https:
 
 
 ## Project setup
+> This project assumes [Node.js](https://nodejs.org/en/) is installed
+
 ```
 npm install
 ```
@@ -24,3 +26,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Built With
+[Vue.js](https://vuejs.org/)
+[tiptap](https://github.com/ueberdosis/tiptap)
