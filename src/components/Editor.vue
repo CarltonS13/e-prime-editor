@@ -74,10 +74,11 @@
 
 <script>
 import Icon from './Icon'
-import WarningMark from './WarningMark'
-import {
-  filterBanned
-} from './prime-filter'
+// import WarningMark from './WarningMark'
+import WarningDecoration from './WarningDecoration'
+// import {
+//   filterBanned
+// } from './prime-filter'
 import {
   Editor,
   EditorContent,
@@ -114,7 +115,7 @@ export default {
     initialContent: {
       type: String,
       required: false,
-      default: 'Write something amazing!',
+      default: 'I am writing something amazing!',
     },
     activeButtons: {
       type: Array,
@@ -189,7 +190,8 @@ export default {
           new Strike(),
           new Underline(),
           new History(),
-          new WarningMark(),
+          // new WarningMark(),
+          new WarningDecoration(),
         ],
         content: this.initialContent,
         // parseOptions: {preserveWhitespace:'full'},
@@ -203,22 +205,23 @@ export default {
     // this.html = this.editor.getHTML()
     // this.json = this.editor.getJSON()
 
-    this.editor.on('update', (update_object) => {
-      const warn = "<span class=\"warning\" style=\"background:none\">"
-      this.html = update_object.getHTML()
-      const cursor = this.editor.state.selection.anchor
-      const editor_len = this.editor.state.doc.textContent.length
-      console.log(cursor)
-      console.log(editor_len)
-      console.log(this.editor.state.doc.textContent.charAt(editor_len - 1))
-      if (cursor > editor_len && this.editor.state.doc.textContent.charAt(editor_len - 1) != " ") {
-        var new_content = String(this.html).replace(warn, "").replace("</warn>", "")
-        new_content = filterBanned(new_content)
-        this.editor.setContent(new_content)
-        this.editor.setSelection(cursor, cursor)
-      }
-
-    })
+    // this.editor.on('update', (update_object) => {
+    //   const warn = "<span class=\"warning\" style=\"background:none\">"
+    //   this.html = update_object.getHTML()
+    //   const cursor = this.editor.state.selection.anchor
+    //   const editor_len = this.editor.state.doc.textContent.length
+    //   console.log(cursor)
+    //   console.log(editor_len)
+    //   console.log(this.editor.state.doc.textContent.charAt(editor_len - 1))
+    //   console.log(update_object.transaction)
+    //   if (cursor > editor_len && this.editor.state.doc.textContent.charAt(editor_len - 1) != " ") {
+    //     var new_content = String(this.html).replace(warn, "").replace("</warn>", "")
+    //     new_content = filterBanned(new_content)
+    //     this.editor.setContent(new_content)
+    //     this.editor.setSelection(cursor, cursor)
+    //   }
+    //
+    // })
   },
 }
 </script>
